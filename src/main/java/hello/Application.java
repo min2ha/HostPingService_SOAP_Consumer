@@ -6,7 +6,6 @@ package hello;
  */
 
 import hello.wsdl.GetHostResponse;
-
 import hello.wsdl.Host;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,15 +26,10 @@ import java.util.List;
 public class Application {
 
 
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
     @Value("#{'${server.name}'.split(',')}")
     private List<String> servers;
-
     private List<Host> hostList = new ArrayList<Host>();
-
-    private static final Logger log = LoggerFactory.getLogger(PingServiceClient.class);
-
-
-
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
@@ -59,9 +53,7 @@ public class Application {
                 log.info("HOST: " + temp.getName() + ", \t PING " + temp.getTimeout() + ", \t PORT:" +  temp.getPort());
 
 
-
-
-            //GetHostResponse response = pingServiceClient.getHostresponseByName(webSite);
+            //sortHostListByResponseTime(webSite);
         };
     }
 
